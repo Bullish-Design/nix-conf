@@ -1,5 +1,5 @@
 # NixOS
-Notes and config files for a fresh NixOS install
+Modular NixOS configuration with Home-Manager and Flakes.
 
 # Notes
 ## Overall goal:
