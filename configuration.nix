@@ -6,9 +6,7 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      #inputs.home-manager.nixosModules.default
+    [ #inputs.home-manager.nixosModules.default
       #./networking/wireguard.nix
     ];
 
@@ -20,19 +18,6 @@
     uv-venv = "UV_NO_MANAGED_PYTHON=1 uv venv --no-python-downloads --python \"$(which python3)\"; echo; source .venv/bin/activate; echo";
     devboot = "devenv up -d; echo ; devenv shell zsh";
   };
-  
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
-  nix.settings.extra-platforms = config.boot.binfmt.emulatedSystems;
-
-  networking.hostName = "framework"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Framework Specific Configuration:
-  services.fwupd.enable = true;
-  services.tailscale.enable = true;
   
   # Enable Flakes:
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -51,11 +36,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   
-  # Disable IPv6
-  networking.enableIPv6 = true; ## This is a workaround for some issues with IPv6 on NixOS.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "America/New_York";
