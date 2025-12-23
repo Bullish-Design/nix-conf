@@ -1,0 +1,7 @@
+session_name: 2-pane-horizontal-split
+windows:
+  - window_name: horiz-window
+    layout: even-vertical
+    panes:
+      - echo hello
+      - vim
